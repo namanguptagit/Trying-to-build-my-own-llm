@@ -18,14 +18,7 @@ def causal_attention_mask(seq_len):
     return jnp.tril(jnp.ones((seq_len, seq_len)))
 
 mask = causal_attention_mask(8)
-plt.figure(figsize=(6, 5))
-plt.imshow(mask, cmap='Blues', interpolation='nearest')
-plt.xlabel('Key Position')
-plt.ylabel('Query Position')
-plt.title('Causal Attention Mask\n(White = Attend, Blue = Masked)')
-plt.colorbar(label='Attention Allowed')
-plt.tight_layout()
-plt.show()
+
 
 class TransformerBlock(nnx.Module):
     def __init__(self, embed_dim, num_heads, ff_dim, *, rngs):
